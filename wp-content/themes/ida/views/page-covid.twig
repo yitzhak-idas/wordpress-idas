@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<!-- Header -->
+
+    <div class="header-article" style ="background-image: url('{{ post.thumbnail.src }}');">
+    </div>
+
+
+    <!-- Article Content -->
+
+    <div id="article">
+
+        <div class="container">
+
+            <div class="article-content">
+
+
+                <h5>Inicio/Información Útil</h5>
+                <h1 class="article-title">COVID-19</h1>
+                <h5 class="serif mb-5">Contexto de Pandemia</h5>
+
+                <p class="text">{{post.content}}</p>
+
+                
+
+                <hr class="divider my-5">
+
+                <p class="share small d-inline mr-2">Compartir</p>
+                <a href=""><img src="{{theme.link}}/img/Instagram-icon-black.png" alt=""></a>
+                <a href=""><img src="{{theme.link}}/img/facebook-icon-black.png" alt=""></a>
+                <a href=""><img src="{{theme.link}}/img/twitter-icon-black.png" alt=""></a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

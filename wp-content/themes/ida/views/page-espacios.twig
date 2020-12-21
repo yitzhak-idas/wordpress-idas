@@ -1,0 +1,126 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Espacios -->
+
+	<div id="espacios">
+
+		<div class="container">
+			<h1 class="page-title mb-5">{{post.title}}</h1>
+		</div>
+
+		<div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 mb-4 mb-lg-0">
+						<img class="page-img pb-5 d-none d-lg-inline" src="{{post.meta('espacios').section_1_img.url | resize(500, 300)}}" alt="">
+
+					</div>
+					<div class="col-12 col-lg-6">
+						<h2 class="page-subtitle">{{post.meta('espacios').section_1_title}}</h2>
+						<img class="page-img mb-4 d-lg-none" src="{{post.meta('espacios').section_1_img.url | resize(500, 300)}}" alt="">
+
+						<div class="text pb-5">{{post.meta('espacios').section_1_description}}</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="pink-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 mb-5 mt-lg-5 mb-lg-0">
+						<img class="page-img pb-5 d-none d-lg-inline" src="{{post.meta('espacios').section_2_img.url | resize(500, 300)}}" alt="">
+					</div>
+					<div class="col-12 col-lg-6 mt-lg-5">
+						<h2 class="page-subtitle">{{post.meta('espacios').section_2_title}}</h2>
+						<img class="page-img mb-4 d-lg-none" src="{{post.meta('espacios').section_2_img.url | resize(500, 300)}}" alt="">
+						<div class="text pb-5">{{post.meta('espacios').section_2_description}}</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 mb-5 mt-lg-5 mb-lg-0">
+						<img class="page-img pb-5 d-none d-lg-inline" src="{{post.meta('espacios').section_3_img.url | resize(500, 300)}}" alt="">
+					</div>
+					<div class="col-12 col-lg-6 mt-lg-5">
+						<h2 class="page-subtitle">{{post.meta('espacios').section_3_title}}</h2>
+						<img class="page-img mb-4 d-lg-none" src="{{post.meta('espacios').section_3_img.url | resize(500, 300)}}" alt="">
+						<div class="text pb-5">{{post.meta('espacios').section_3_description}}</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="pink-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 mb-5 mt-lg-5 mb-lg-0">
+						<img class="page-img pb-5 d-none d-lg-inline" src="{{post.meta('espacios').section_4_img.url | resize(500, 300)}}" alt="">
+					</div>
+					<div class="col-12 col-lg-6 mt-lg-5">
+						<h2 class="page-subtitle">{{post.meta('espacios').section_4_title}}</h2>
+						<img class="page-img mb-4 d-lg-none" src="{{post.meta('espacios').section_4_img.url | resize(500, 300)}}" alt="">
+						<div class="text pb-5">{{post.meta('espacios').section_4_description}}</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Últimos Eventos -->
+
+	<div id="events">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-10">
+					<h2 class="page-subtitle_2">Últimos Eventos</h2>
+				</div>
+				<div class="col-0 col-md-2 text-right">
+					<a class="btn-all text-right d-none d-md-inline" href="/category/eventos/">VER MÁS</a>
+				</div>
+			</div>
+
+			<div class="row">
+
+				{% for event in events %}
+
+
+					<div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+						<div class="card">
+							<div class="card-body">
+								<p class="card_tag">EVENTOS</p>
+								<h5 class="card-title">{{event.post_title}}</h5>
+								<p class="card-text">{{event.post_content |slice (0, 100) }}...</p>
+								<a class="card-btn-more" href="{{event.post_name}}">Ver más
+									<img src="{{theme.link}}/img/arrow_right.png" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+			<a class="btn-all text-center d-block mt-5 mx-auto d-md-none" href="/category/eventos/">VER MÁS</a>
+
+		</div>
+
+	</div>
+
+
+{% endblock %}

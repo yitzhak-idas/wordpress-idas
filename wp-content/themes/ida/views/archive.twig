@@ -1,0 +1,71 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "index.twig" %}
+
+{% block content %}
+
+<!-- Últimas Noticias -->
+
+<div id="latest-news" class="py-5">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-8 d-flex d-inline">
+				<h2 class="page-title">{{title}}</h2>
+			</div>
+			<div class="col-lg-2 d-none d-lg-inline text-right">
+				<h5 class="filtrar serif">Filtrar por</h5>
+			</div>
+			<div class="col-lg-2 d-none d-lg-inline text-left">
+				<div class="dropdown">
+					<button class="btn btn-category dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{title}}
+						<i class="ml-3 fas fa-angle-down cat-angle-down"></i>
+						<i class="hidden ml-3 fas fa-angle-up cat-angle-up"></i>
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+						{% for cat in categories %}
+
+							<a class="dropdown-item" href="{{fn('get_category_link', cat)}}">{{cat.name }}</a>
+
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		{% for post in posts %}
+			<div class="row mt-5">
+
+
+				<div class="col-12 col-md-6">
+					<img class="page-img mb-4 mb-md-0" src="{{ post.thumbnail.src | resize(500,300) }}" alt="">
+				</div>
+				<div class="col-12 col-md-6">
+					<h3 class="page-subtitle">
+						{{post.title}}</h3>
+					<p class="date">{{post.date}}
+						por
+						{{post.author}}</p>
+					<p>{{post.content | slice(0, 200)}}
+						...</p>
+
+					<a class="btn-project" href="{{post.link}}">Ver más
+						<i class="mt-4 ml-2 fas fa-angle-right"></i>
+					</a>
+
+				</div>
+
+
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+
+  
+  
+{% endblock %}

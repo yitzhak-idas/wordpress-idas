@@ -1,0 +1,159 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Idas y Vueltas -->
+
+	<div id="idas">
+		<div class="container">
+			<h1 class="page-title">{{post.title}}</h1>
+
+			<img class="page-img py-5" src="{{ post.thumbnail.src }}" alt="Fachada del edificio de idas y vueltas">
+
+			<h2 class="page-subtitle">{{post.meta('section1_title')}}</h2>
+
+			<p class="text">{{post.meta('section1_description')}}</p>
+		</div>
+	</div>
+
+	<div id="que-hacemos">
+		<div class="container">
+			<h2 class="page-subtitle">{{post.meta('section2_title')}}</h2>
+			<p class="text">{{post.meta('section2_description')}}</p>
+		</div>
+	</div>
+
+	<div id="proyectos">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="page-subtitle_2">Proyectos</h2>
+				</div>
+				<div class="col text-right">
+					<a class="btn-all text-right d-none d-md-inline" href="/proyectos-en-curso">VER TODOS</a>
+				</div>
+			</div>
+			<div class="row mt-4">
+
+				{% for proyecto in proyectos %}
+
+
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+						<div class="card">
+							<img class="card-img-top" src="{{proyecto.thumbnail |resize (600,400)}}" alt="Card image cap">
+							<div class="card-body text-center">
+								<h5 class="card-title">{{proyecto.title}}</h5>
+								<p class="card-author">Publicado el {{proyecto.date}}</p>
+								<p class="card-text">{{proyecto.content | slice(0, 80)}}...</p>
+								<a class="card-btn-more" href="{{proyecto.link}}">Ver más
+									<img src="{{theme.link}}/img/arrow_right.png" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+			<a class="btn-all text-center d-block mt-5 ml-auto d-md-none" href="/proyectos-en-curso">VER TODOS</a>
+		</div>
+	</div>
+
+	<!-- Swiper Directiva -->
+
+	<div id="directiva">
+		<div class="container">
+			<h2 class="page-subtitle_2 mt-5">Integrantes de comisión directiva</h2>
+
+			<div class="swiper-container swiper-container-directiva js-swiper-container-directiva">
+				<div class="swiper-wrapper">
+
+					{% for item in post.meta('directiva') %}
+
+
+						<div class="swiper-slide">
+
+
+							<div class="card-body text-center">
+								<h5 class="card-title">{{item.nombre}}</h5>
+								<p class="card-author">{{item.cargo}}</p>
+								<p class="card-text">{{item.description}}</p>
+							</div>
+
+
+						</div>
+
+					{% endfor %}
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="venue">
+		<div class="container">
+			<h2 class="page-subtitle mb-5">Nuestras Sedes</h2>
+			<div class="row">
+				<div class="col-12 col-md-6 text-left text-lg-center my-2">
+					<img class="page-img" src="{{post.meta('sedes').sede_montevideo_img.url}}" alt="Foto Sede de Montevideo">
+					<h4 class="serif venue-title my-4">{{post.meta('sedes').sede_montevideo_title}}</h4>
+					<div class="serif venue-direction mb-3">{{post.meta('sedes').sede_montevideo_address}}</div>
+					<div class="venue-description w-100 m-lg-auto">{{post.meta('sedes').sede_montevideo_description}}</div>
+				</div>
+				<div class="col-12 col-md-6 text-left text-lg-center my-2">
+					<img class="page-img" src="{{post.meta('sedes').sede_chuy_img.url}}" alt="Foto Sede del Chuy">
+					<h4 class="serif venue-title my-4">{{post.meta('sedes').sede_chuy_title}}</h4>
+					<div class="serif venue-direction mb-3">{{post.meta('sedes').sede_chuy_address}}</div>
+					<div class="venue-description w-100 m-lg-auto">{{post.meta('sedes').sede_chuy_description}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<div id="apoyo">
+			        <div class="container">
+			            <h2 class="page-subtitle">Apoyo</h2>
+			            <div class="py-5 row align-items-center">
+			                <div class="col-sm-12 col-md-6 col-lg mb-5 mb-lg-0">
+			                    <img class="logo-apoyo" src="img/logo_anni.png" alt="Logo Anni">
+			                </div>
+			                <div class="col-sm-12 col-md-6 col-lg mb-5 mb-lg-0">
+			                    <img class="logo-apoyo" src="img/logo_SigEp.png" alt="Logo SigEp">
+			                </div>
+			                <div class="col-sm-12 col-md-6 col-lg mb-5 mb-lg-0">
+			                    <img class="logo-apoyo" src="img/logo_norelco.png" alt="Logo Norelco">
+			                </div>
+			                <div class="col-sm-12 col-md-6 col-lg mb-5 mb-lg-0">
+			                    <img class="logo-apoyo" src="img/logo_sencor.png" alt="Logo Sencor">
+			                </div>
+			                <div class="col-sm-12 col-md-6 col-lg mb-5 mb-lg-0">
+			                    <img class="logo-apoyo" src="img/logo_orion.png" alt="Logo Orion">
+			                </div>
+			            </div>
+			        </div>
+			    </div>-->
+
+	<!-- Swiper Logos -->
+
+	<div id="apoyo">
+		<div class="container">
+			<h2 class="page-subtitle">Apoyo</h2>
+			<!-- Swiper -->
+			<div class="swiper-container swiper-container-logos js-swiper-container-logos">
+				<div class="swiper-wrapper">
+
+					{% for item in post.meta('apoyos') %}
+
+						<div class="swiper-slide" data-hash="slide1"><img src="{{item.logo}}" alt="Logos de apoyo"></div>
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

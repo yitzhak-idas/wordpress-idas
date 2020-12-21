@@ -1,0 +1,146 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Noticias Destacadas -->
+
+
+	<div id="news-section">
+
+		<div class="container">
+
+			<h1 class="page-title mb-5">{{post.title}}</h1>
+
+			<div class="principal-news-desktop">
+				<div class="row no-gutters d-none d-lg-block">
+
+					<div class="col-lg-12">
+						<img class="page-img banner-img" src="{{sticky.thumbnail |resize (1000,450) }}" alt="">
+						<div class="block-principal"></div>
+						<div class="banner-text-principal">
+							<h2 class="serif">{{sticky.title}}</h2>
+							<p class="date">{{sticky.date}} por {{sticky.author}} | {{sticky.category}}
+							</p>
+							<p class="serif w-75">{{sticky.content |slice (0,300)}}...</p>
+							<a href="{{sticky.link}}" class="btn-banner">LEER MÁS</a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="principal-news-mobile d-lg-none">
+				<img class="page-img mb-4" src="{{sticky.thumbnail |resize (1000,450) }}" alt="">
+				<h5 class="page-subtitle">{{sticky.title}}</h5>
+				<p class="text">{{sticky.content |slice (0,200)}}</p>
+				<a class="btn-primary" href="{{sticky.link}}">LEER</a>
+			</div>
+
+
+			<div id="banners-desktop" class="d-none d-lg-block mt-4">
+
+				<div class="row">
+					{% if post.meta('news').banner_1_img %}
+
+						<div class="col-12 col-lg-6 mb-3">
+							<div class="relative">
+								<img class="page-img banner-img" src="{{post.meta('news').banner_1_img | resize(500, 200)}}" alt="">
+
+								<div class="block"></div>
+								<div class="banner-text">
+									<h3 class="serif">{{post.meta('news').banner_1_title}}</h3>
+									<p class="serif w-75">{{post.meta('news').banner_1_description}}</p>
+									<a href="{{post.meta('news').banner_1_link}}" class="btn-banner">LEER MÁS</a>
+								</div>
+							</div>
+						</div>
+
+					{% endif %}
+
+					{% if post.meta('news').banner_2_img %}
+
+						<div class="col-12 col-lg-6">
+							<div class="relative">
+								<img class="page-img banner-img" src="{{news.banner_2_img | resize(500, 200)}}" alt="">
+
+								<div class="block"></div>
+								<div class="banner-text">
+									<h3 class="serif">{{post.meta('news').banner_2_title}}</h3>
+									<p class="serif w-75">{{post.meta('news').banner_2_description}}</p>
+									<a href="{{post.meta('news').banner_2_link}}" class="btn-banner">LEER MÁS</a>
+								</div>
+							</div>
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- Últimas Noticias -->
+
+	<div id="latest-news">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 d-flex d-inline">
+					<h2 class="page-subtitle">Últimas Noticias</h2>
+				</div>
+				<div class="col-lg-2 d-none d-lg-inline text-right">
+					<h5 class="filtrar serif">Filtrar por</h5>
+				</div>
+				<div class="col-lg-2 d-none d-lg-inline text-left">
+					<div class="dropdown">
+						<button class="btn btn-category dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Categorías
+							<i class="ml-3 fas fa-angle-down cat-angle-down"></i>
+							<i class="hidden ml-3 fas fa-angle-up cat-angle-up"></i>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+							{% for cat in categories %}
+
+								<a class="dropdown-item" href="{{fn('get_category_link', cat)}}">{{cat.name }}</a>
+
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			{% for post in posts %}
+				<div class="row mt-5">
+
+
+					<div class="col-12 col-md-6">
+						<img class="page-img mb-4 mb-md-0" src="{{ post.thumbnail.src | resize(500,300) }}" alt="">
+					</div>
+					<div class="col-12 col-md-6">
+						<h3 class="page-subtitle">
+							{{post.title}}</h3>
+						<p class="date">{{post.date}}
+							por
+							{{post.author}}</p>
+						<p>{{post.content | slice(0, 200)}}...</p>
+
+						<a class="btn-project" href="{{post.link}}">Ver más
+							<i class="mt-4 ml-2 fas fa-angle-right"></i>
+						</a>
+
+					</div>
+
+
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+{% endblock %}

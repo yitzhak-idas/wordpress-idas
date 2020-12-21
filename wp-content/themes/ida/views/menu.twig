@@ -1,0 +1,171 @@
+<!-- Menú -->
+
+<div id="header-logo" class="d-none d-lg-inline-block">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col d-none d-lg-inline-block">
+				<a href="/"><img src="{{ theme.link }}/img/logo.png" alt="Logo Idas y Vueltas"></a>
+			</div>
+			<div class="col text-right d-none d-lg-inline-block">
+
+				<form class="d-none d-lg-inline-block" action="/">
+
+					<input type="search" value="{{ function('get_search_query') }}" name="s">
+					<div><i class="fas m-glass fa-search"></i></div>
+
+				</form>
+
+				<div class="dropdown show d-none d-lg-inline drop-world">
+					<a class="btn btn-world dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img class="ml-2 mb-1" src="{{ theme.link }}/img/world-icon.png" alt="">
+					</a>
+
+					<div id="drop" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						{% include "gtranslate.twig" %}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-mio">
+	<div class="container px-0 px-sm-3">
+
+		<a class="a-mobile d-lg-none" href="/"><img class="logo-mobile" src="{{ theme.link }}/img/logo.png" alt="Logo Idas y Vueltas"></a>
+
+		<div class="justify-content-end">
+
+
+			<div class="dropdown show d-inline d-lg-none">
+				<a class="btn btn-world dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img class="ml-2" src="{{ theme.link }}/img/world-icon.png" alt="">
+				</a>
+
+				<div id="drop" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					{% include "gtranslate.twig" %}
+				</div>
+			</div>
+
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+
+		</div>
+
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<div class="input-section d-flex d-lg-none justify-content-between align-items-center">
+
+				<form action="">
+					<input class="d-lg-none" type="search" value="{{ function('get_search_query') }}" name="s" placeholder="&#xF002" style="font-family:Arial, FontAwesome">
+				</form>
+					
+				<div class="d-inline" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+
+			<ul class="navbar-nav">
+				{% if menu %}
+					{% for item in menu.items %}
+
+						{% if item.children %}
+							<div class="d-flex justify-content-between align-items-center">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle text-uppercase position-relative js-dropdown-service" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										{{item.title}}
+										<i class="icon-plus-service fas fa-plus d-lg-none"></i>
+										<i class="icon-minus-service fas fa-minus d-lg-none hidden"></i>
+									</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										{% for child in item.children %}
+											<a class="dropdown-item serif" href="{{child.link}}">{{child.title}}</a>
+										{% endfor %}
+									</div>
+								</li>
+
+							</div>
+
+						{% else %}
+
+							<li class="nav-item text-uppercase {{ item.classes | join(' ') }}">
+							<a class="nav-link" href="{{item.link}}">{{item.title}}
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+
+					{% endif %}
+
+
+					<hr class="divider-menus d-lg-none">
+
+				{% endfor %}
+
+			{% endif %}
+
+			<!--<li class="nav-item">
+													<a class="nav-link" href="/">HOME
+														<span class="sr-only">(current)</span>
+													</a>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<li class="nav-item">
+													<a class="nav-link" href="/idasyvueltas">IDAS Y VUELTAS</a>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<li class="nav-item">
+													<a class="nav-link" href="/espacios">ESPACIOS</a>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<div class="d-flex justify-content-between align-items-center">
+													<li class="nav-item dropdown">
+														<a class="nav-link dropdown-toggle position-relative js-dropdown-service" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															SERVICIOS
+															<i class="icon-plus-service fas fa-plus d-lg-none"></i>
+															<i class="icon-minus-service fas fa-minus d-lg-none hidden"></i>
+														</a>
+														<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+															<a class="dropdown-item serif" href="/laboral">Laboral</a>
+															<a class="dropdown-item serif" href="/vivienda">Vivienda</a>
+															<a class="dropdown-item serif" href="/documentacion">Documentación</a>
+															<a class="dropdown-item serif" href="/educacion">Educación</a>
+															<a class="dropdown-item serif" href="/salud">Salud</a>
+														</div>
+													</li>
+									
+												</div>
+												<hr class="divider-menus d-lg-none">
+									
+												<li class="nav-item">
+													<a class="nav-link" href="/noticias">NOTICIAS</a>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<li class="nav-item">
+													<a class="nav-link" href="/colaborar">COLABORAR</a>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<li class="nav-item dropdown">
+													<a class="nav-link dropdown-toggle position-relative js-dropdown-info" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														INFORMACIÓN ÚTIL
+														<i class="icon-plus-info fas fa-plus d-lg-none"></i>
+														<i class="icon-minus-info fas fa-minus d-lg-none hidden"></i>
+													</a>
+													<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+														<a class="dropdown-item serif" href="/preguntas-frecuentes">Preguntas Frecuentes
+														</a>
+														<a class="dropdown-item serif" href="/covid">COVID-19</a>
+														<a class="dropdown-item serif" href="/sitios-referencia">Sitios de Referencia</a>
+														<a class="dropdown-item serif" href="/seccion-generica">Sección genérica</a>
+													</div>
+												</li>
+												<hr class="divider-menus d-lg-none">
+												<li class="nav-item">
+													<a class="nav-link" href="/contacto">CONTACTO</a>
+												</li>-->
+		</ul>
+	</div>
+</div></nav>

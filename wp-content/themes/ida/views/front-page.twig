@@ -1,0 +1,290 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Swiper Slide-->
+	<div class="swiper-container swiper-container-slide js-swiper-slide">
+		<div class="swiper-wrapper">
+
+			{% for item in post.meta('home_slide') %}
+				
+				<div class="swiper-slide">
+
+					<div id="hero-img" style ="background-image: url('{{item.img.url}}');"></div>
+					<div class="block-hero">
+						<div class="container">
+
+							<div class="row">
+								<div class="col-12 col-md-12 col-lg-6">
+									<h2>{{item.title}}</h2>
+									<p class="date">{{item.data | slice(0, 70)}}</p>
+									<p>{{item.description | slice(0, 275)}}</p>
+
+									<a class="btn-hero" href="{{item.link}}">LEER</a>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+		
+
+		<!-- Add Arrows -->
+		<div class="swiper-button-next d-none d-md-inline"></div>
+		<div class="swiper-button-prev d-none d-md-inline"></div>
+	</div>
+
+
+	<!-- Donar -->
+
+	<div id="donar">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 col-md-6 text-left text-lg-right">
+					<div>{{post.meta('home').donar_description}}</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center mt-4 mt-lg-0">
+					<a class="btn-donar d-block d-lg-inline" href="/colaborar">DONAR</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- NUESTRO OBJETIVO -->
+
+	<div id="objetivos">
+		<div class="container">
+			<h1 class="page-title">{{post.meta('home').objetivos_title}}</h1>
+			<div class="text">{{post.meta('home').objetivos_description}}</div>
+
+
+			<div id="banners-desktop" class="d-none d-md-block my-5">
+
+				<div class="row mt-4">
+					{% if banner %}
+
+						<div class="col-12 col-lg-6 mb-3">
+							<div class="relative">
+								<img class="page-img banner-img" src="{{post.meta('home').banner_1_img | resize(500, 200)}}" alt="">
+
+								<div class="block"></div>
+								<div class="banner-text">
+									<h3 class="serif">{{post.meta('home').banner_1_title}}</h3>
+									<div class="serif w-75 mb-3">{{post.meta('home').banner_1_description}}</div>
+									<a href="{{post.meta('home').banner_1_link}}" class="btn-banner">LEER MÁS</a>
+								</div>
+							</div>
+						</div>
+
+					{% endif %}
+
+					{% if banner2 %}
+
+						<div class="col-12 col-lg-6">
+							<div class="relative">
+								<img class="page-img banner-img" src="{{post.meta('home').banner_2_img | resize(500, 200)}}" alt="">
+
+								<div class="block"></div>
+								<div class="banner-text">
+									<h3 class="serif">{{post.meta('home').banner_2_title}}</h3>
+									<div class="serif w-75 mb-3">{{post.meta('home').banner_2_description}}</div>
+									<a href="{{post.meta('home').banner_2_link}}" class="btn-banner">LEER MÁS</a>
+								</div>
+							</div>
+						</div>
+
+					{% endif %}
+
+				</div>
+			</div>
+
+
+			<div id="welcome-desktop" class="d-none d-md-block">
+				<h2 class="page-subtitle">{{post.meta('home').bienvenida_title}}</h2>
+				<div class="text">{{post.meta('home').bienvenida_description}}</div>
+				<a class="btn-primary" href="/espacios">VER MÁS</a>
+			</div>
+
+			<div id="banners-mobile" class="d-md-none">
+
+				<a class="text-decoration-none" href="/espacios">
+
+					<div class="banners-mobile banners-mobile_1 mt-5">
+						<div class="row">
+							<div class="col-8">
+								<h3 class="serif">Espacios de Encuentro</h3>
+							</div>
+							<div class="col-4">
+								<p class="text-right">ACCEDER</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+
+				<a class="text-decoration-none" href="" data-toggle="modal" data-target=".modal-2">
+
+					<div class="banners-mobile banners-mobile_2 mt-3">
+						<div class="row">
+							<div class="col-8">
+								<h3 class="serif">Servicios</h3>
+							</div>
+							<div class="col-4">
+								<p class="text-right">ACCEDER</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<div class="modal fade modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg modal-full">
+						<div class="modal-content modal-color-2">
+							<div class="container">
+								<div class="row">
+									<div class="col-8">
+										<h5>SERVICIOS</h5>
+									</div>
+									<div class="col-4">
+										<button type="button" class="close modal-btn-close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+								</div>
+
+								<div class="modal-links text-center text-decoration-none">
+
+									<a href="/laboral">
+										<h3>Laboral</h3>
+									</a>
+									<a href="/vivienda">
+										<h3>Vivienda</h3>
+									</a>
+									<a href="/documentacion">
+										<h3>Documentación</h3>
+									</a>
+									<a href="/educacion">
+										<h3>Educación</h3>
+									</a>
+									<a href="/salud">
+										<h3>Salud</h3>
+									</a>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<a class="text-decoration-none" href="" data-toggle="modal" data-target=".modal-3">
+
+					<div class="banners-mobile banners-mobile_3 mt-3">
+						<div class="row">
+							<div class="col-8">
+								<h3 class="serif">Información Útil</h3>
+							</div>
+							<div class="col-4">
+								<p class="text-right">ACCEDER</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<div class="modal fade modal-3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg modal-full">
+						<div class="modal-content modal-color-3">
+							<div class="container">
+								<div class="row">
+									<div class="col-8">
+										<h5>INFORMACIÓN</h5>
+									</div>
+									<div class="col-4">
+										<button type="button" class="close modal-btn-close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+								</div>
+
+								<div class="modal-links text-center text-decoration-none">
+
+									<a href="/preguntas-frecuentes">
+										<h3>Preguntas Frecuentes</h3>
+									</a>
+									<a href="/covid">
+										<h3>Covid 19</h3>
+									</a>
+									<a href="/sitios-referencia">
+										<h3>Sitios de Referencia</h3>
+									</a>
+									<a href="/seccion-generica">
+										<h3>Sección Genérica</h3>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<!-- NOTICIAS DESTACADAS -->
+
+	<div id="news">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="page-subtitle_2">Noticias destacadas</h2>
+				</div>
+				<div class="col text-right">
+					<a class="btn-all text-right d-none d-md-inline" href="/noticias">VER TODAS</a>
+				</div>
+			</div>
+
+			<div class="row">
+
+				{% for post in posts %}
+
+
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+						<div class="card">
+							<img class="card-img-top" src="{{ post.thumbnail.src | resize(500, 300)}}" alt="Card image cap">
+							<div class="card-body">
+								<p class="card_tag">{{post.category | upper }}</p>
+								<h5 class="card-title">{{post.title | slice(0, 50)}}...</h5>
+								<p class="card-author">{{post.date}}
+									por
+									{{post.author}}</p>
+								<p class="card-text">{{post.content | slice(0, 100)}}...</p>
+
+								<a class="card-btn-more" href="{{post.link}}">Ver más
+									<img src="{{ theme.link }}/img/arrow_right.png" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+
+			<a class="btn-all text-center d-block m-auto d-md-none" href="/noticias">VER TODAS</a>
+
+
+		</div>
+	</div>
+
+{% endblock %}

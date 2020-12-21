@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<!-- Servicios -->
+
+    <div id="colaborar">
+
+        <div class="container">
+
+            <h1 class="page-title">{{post.title}}</h1>
+
+        </div>
+
+        <div class="py-5">
+            <div class="container">
+                <h2 class="page-subtitle">{{post.meta('colaborar').section_1_title}}</h2>
+                <div class="text">{{post.meta('colaborar').section_1_description}}</div>
+
+                {% if link %}
+                <a class="btn-primary mt-4" href="{{post.meta('colaborar').btn_link_1}}">{{post.meta('colaborar').btn_name_1}}</a>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="pink-bg py-5">
+            <div class="container">
+
+                <h2 class="page-subtitle">{{post.meta('colaborar').section_2_title}}</h2>
+                <div class="text">{{post.meta('colaborar').section_2_description}}</div>
+                
+                {% if link2 %}
+                <a class="btn-primary mt-4" href="">{{post.meta('colaborar').btn_name_2}}</a>
+                {% endif %}
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

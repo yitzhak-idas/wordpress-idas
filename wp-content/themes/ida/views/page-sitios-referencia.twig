@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Sitios Referencia -->
+
+	<div id="sitios">
+
+		<div class="container">
+
+			<h1 class="page-title mb-5">Sitios de referencia</h1>
+
+			<div class="row">
+
+				{% for item in post.meta('sitios') %}
+
+
+					<div class="col-12 col-sm-6 col-lg-4 d-flex align-items-stretch">
+						<div class="card">
+							<div class="card-body text-center">
+								<img class="mb-3 w-75" src="{{item.logo}}" alt="">
+                                <h5 class="card-title">{{item.site_name}}</h5>
+								<p class="card-text">{{item.description}}</p>
+								<a class="card-btn-more" href="{{item.link}}">IR AL SITIO
+									<img src="{{theme.link}}/img/arrow_right.png" alt="arrow">
+								</a>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+{% endblock %}

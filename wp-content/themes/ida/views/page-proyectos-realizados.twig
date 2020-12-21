@@ -1,0 +1,55 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Proyectos Realizados -->
+
+	<div id="projects-all">
+
+		<div class="container">
+			<h1 class="page-title">Proyectos</h1>
+
+			<div class="row mt-5">
+				<div class="col-12 mb-2 mb-sm-0 col-sm-6">
+					<a class="btn-inactive d-block text-center" href="/proyectos-en-curso">EN CURSO</a>
+				</div>
+				<div class="col-12 col-sm-6">
+					<a class="btn-active d-block text-center" href="/proyectos-realizados">REALIZADOS</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container">
+
+			<div class="row mt-5">
+
+				{% for project in done %}
+					
+
+				<div class="col-12 col-lg-6 my-4">
+					<img class="page-img" src="{{project.thumbnail.src |resize (600,400)}}" alt="">
+				</div>
+				<div class="col-12 col-lg-6 my-4">
+					<h2 class="page-subtitle">{{project.post_title}}</h2>
+					<p class="date">{{project.author.name}} | {{project.post_date |date("d/m/Y")}}</p>
+					<p class="text mb-4">{{project.post_content |slice (0,150)}}</p>
+
+					<a class="btn-project" href="{{project.post_name}}">Ver más
+						<i class="ml-2 fas fa-angle-right"></i>
+					</a>
+
+				</div>
+
+				{% endfor %}
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

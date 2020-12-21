@@ -1,0 +1,48 @@
+ <!-- Footer -->
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-4">
+                    <img src="{{ theme.link }}/img/logo.png" alt="Logo idas y vueltas">
+                </div>
+                <div class="col-lg-4">
+                    <p> <b>{{options.sede_1}} </b> <br>
+                        {{options.direccion_sede_1}} <br>
+                        {{options.telefono_sede_1}}
+                    </p>
+                    <p> <b>{{options.sede_2}}</b> <br>
+                        {{options.direccion_sede_2}} <br>
+                        {{options.telefono_sede_2}}
+                    </p>
+                </div>
+                <div class="col-lg-3 text-lg-right">
+                    <p><b>Síguenos</b></p>
+
+                    {% if options.link_instagram %}
+
+                    <a href="{{options.link_instagram}}" target="blank"><img src="{{ theme.link }}/img/Instagram-icon.png" alt="Icono de Instagram"></a>
+
+                    {% endif %}
+                    
+                    
+                    {% if options.link_facebook %}
+
+                    <a href="{{options.link_facebook}}" target="blank"><img src="{{ theme.link }}/img/facebook-icon.png" alt="Icono de Facebook"></a>
+                    
+                    {% endif %}
+
+                    {% if options.link_twitter %}
+                    
+                    <a href="{{options.link_twitter}}" target="blank"><img src="{{ theme.link }}/img/twitter-icon.png" alt="Icono de Twitter"></a>
+                    
+                    {% endif %}
+
+                    <p class="footer-date">&copy; {{"now"|date('Y')}} Idas y Vueltas</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {{function('wp_footer')}}

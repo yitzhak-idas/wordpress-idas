@@ -1,0 +1,51 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+	<!-- Resultados de Búsqueda -->
+
+	<div id="resultados">
+
+		<div class="container">
+
+
+			<h2 class="page-title">Resultados de Búsqueda</h2>
+
+			{% if posts | length > 0 %}
+
+				{% for post in posts %}
+					<div class="row mt-5">
+
+
+						<div class="col-12 col-md-6">
+							<img class="page-img mb-4 mb-md-0" src="{{ post.thumbnail.src | resize(500,300) }}" alt="">
+						</div>
+						<div class="col-12 col-md-6">
+							<h3 class="page-subtitle">{{post.title}}</h3>
+							<p class="date">{{post.date}}
+								por
+								{{post.author}}</p>
+							<p>{{post.content | slice(0, 200)}}...</p>
+
+							<a class="btn-project" href="{{post.link}}">Ver más
+								<i class="mt-4 ml-2 fas fa-angle-right"></i>
+							</a>
+
+						</div>
+
+					</div>
+					
+				{% endfor %}
+
+			{% else %}
+
+				<p>
+					No se ha encontrado ningún resultado que coincida con la búsqueda.
+				</p>
+
+			{% endif %}
+
+
+	</div>
+</div>{% endblock %}

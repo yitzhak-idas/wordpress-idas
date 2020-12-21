@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Article Content -->
+
+	<div id="article">
+
+		<div class="container">
+
+			<div class="article-content">
+
+
+				<h5>Inicio/Información Útil</h5>
+				<h1 class="article-title">{{post.title}}</h1>
+
+				<p class="text">{{post.content}}
+				</p>
+
+
+				<hr class="divider my-5">
+
+				<p class="share small d-inline mr-2">Compartir</p>
+				<a href=""><img src="{{theme.link}}/img/Instagram-icon-black.png" alt=""></a>
+				<a href=""><img src="{{theme.link}}/img/facebook-icon-black.png" alt=""></a>
+				<a href=""><img src="{{theme.link}}/img/twitter-icon-black.png" alt=""></a>
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+{% endblock %}

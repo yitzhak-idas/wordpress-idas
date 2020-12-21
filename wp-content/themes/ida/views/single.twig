@@ -1,0 +1,102 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Header -->
+
+	<div class="header-news" style="background-image: url({{ post.thumbnail.src}});"></div>
+
+	<!-- Article Content -->
+
+	<div id="article">
+
+		<div class="container">
+
+			<div class="article-content">
+
+				<h5>Inicio / Novedades
+				</h5>
+				<h1 class="article-title">{{post.title}}</h1>
+				<h5 class="serif mb-5">{{post.date}} por {{post.author}}</h5>
+
+				<div class="text">{{post.content}}</div>
+
+				<hr class="divider my-5">
+
+				<p class="share small d-inline mr-2">Compartir</p>
+
+				
+				{% if options.link_instagram %}
+				
+				<a href="{{options.link_instagram}}" target="blank"><img src="{{theme.link}}/img/Instagram-icon-black.png" alt=""></a>
+				
+				{% endif %}
+
+				{% if options.link_facebook %}
+
+				<a href="{{options.link_facebook}}" target="blank"><img src="{{theme.link}}/img/facebook-icon-black.png" alt=""></a>
+
+				{% endif %}
+
+				{% if options.link_twitter %}
+
+				<a href="{{options.link_twitter}}" target="blank"><img src="{{theme.link}}/img/twitter-icon-black.png" alt=""></a>
+
+				{% endif %}
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<!-- Noticias Relacionadas -->
+
+	{% if related %}
+	
+		<div id="related-news" class="d-lg-none">
+			<div class="container">
+				<div class="row">
+					<div class="col-10">
+						<h2 class="page-subtitle_2">Noticias relacionadas</h2>
+					</div>
+					<div class="col-2 text-right">
+						<a class="btn-all text-right d-none d-md-inline" href="noticias.html">VER MÁS</a>
+					</div>
+				</div>
+				<div class="row">
+
+					{% for post in related  %}
+						
+
+						<div class="col-lg-4 col-md-6">
+							<div class="card">
+								<img class="card-img-top" src="{{post.thumbnail.src}}" alt="Card image cap">
+								<div class="card-body">
+									<p class="card_tag">{{post.post_category  |upper}}</p>
+									<h5 class="card-title">{{post.post_title}}</h5>
+									<p class="card-author">{{post.post.date |date("d/m/Y")}} por {{post.author.name}}</p>
+									<p class="card-text">{{post.post_content |slice(0,100)}}</p>
+									<a class="card-btn-more" href="{{post.link}}">Ver más
+										<img src="{{theme.link}}/img/arrow_right.png" alt="">
+									</a>
+								</div>
+							</div>
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+
+				<a class="btn-all text-center d-block m-auto d-md-none" href="/noticias">VER TODAS</a>
+
+
+			</div>
+		
+		</div>
+
+	{% endif %}
+
+{% endblock %}

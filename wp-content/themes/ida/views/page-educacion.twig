@@ -1,0 +1,117 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+	<!-- Educación -->
+
+	<div id="servicios">
+
+		<div class="container">
+
+			<h5>SERVICIOS</h5>
+			<h1 class="page-title mb-5">{{post.title}}</h1>
+			<div class="text">{{post.content}}</div>
+
+			<img class="page-img my-5" src="{{post.thumbnail.src}}" alt="">
+
+		</div>
+
+	</div>
+
+	<!-- Contacto -->
+
+	{% if nombre %}
+		<div id="contact">
+			<div class="container">
+
+				<h2 class="page-subtitle_2 mb-5">Contacto</h2>
+
+				<div class="contact-card text-center text-md-left text-lg-left">
+					<div class="row">
+						<div class="col-12 col-md-4">
+							<p class="small mb-2">DOCUMENTACIÓN</p>
+							<h5 class="mb-2 serif">{{post.meta('nombre')}}</h5>
+							<p class="serif">{{post.meta('cargo')}}</p>
+						</div>
+						<div class="col-12 col-md-4">
+							<h6>
+								<b>Días de atención personal</b>
+							</h6>
+							<p>{{post.meta('dia_de_atencion')}}</p>
+							<h6>
+								<b>Ubicación</b>
+							</h6>
+							<p>{{post.meta('ubicacion')}}</p>
+						</div>
+						<div class="col-12 col-md-4">
+							<h6>
+								<b>Casos Urgentes</b>
+							</h6>
+							<p>{{post.meta('casos_urgentes')}}</p>
+							<h6>
+								<b>Consultas</b>
+							</h6>
+							<p>{{post.meta('consultas')}}</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	{% endif %}
+
+
+	<!-- Links de Interés -->
+
+	{% if preguntas %}
+		<div id="links">
+			<div class="container">
+				<h2 class="page-subtitle mb-5">
+					<b>Links de Interés</b>
+				</h2>
+
+				<div id="accordion">
+
+					{% for item in post.meta('links') %}
+
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<div class="row">
+									<div class="col-10">
+										<h5 class="mb-0 text-left">
+											<button class="btn btn-link" data-toggle="collapse" data-target="#collapse-{{loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+												<div>{{item.pregunta}}</div>
+											</button>
+										</h5>
+									</div>
+									<div class="col-2 text-right">
+										<i class="fas fa-angle-down"></i>
+										<i class="hidden fas fa-angle-up"></i>
+									</div>
+								</div>
+
+							</div>
+
+							<div id="collapse-{{loop.index}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">
+									<div class="text">{{item.respuesta}}</div>
+								</div>
+							</div>
+						</div>
+
+						<hr>
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+	{% endif %}
+
+
+{% endblock %}

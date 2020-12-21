@@ -1,0 +1,53 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+ <!-- Servicios -->
+
+    <div id="preguntas">
+
+        <div class="container">
+
+            <h1 class="page-title">{{post.title}}</h1>
+
+            <div id="accordion" class="pt-3">
+
+                {% for item in post.meta('preguntas_frecuentes') %}
+                    
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5 class="mb-0 text-left">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-{{loop.index}}"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            <div>{{item.pregunta}}</div>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="col-2 text-right">
+                                    <i class="fas fa-angle-down"></i>
+                                    <i class="hidden fas fa-angle-up"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="collapse-{{loop.index}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="text">{{item.respuesta}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
